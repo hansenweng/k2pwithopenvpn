@@ -94,6 +94,11 @@ jobs:
       run: |
         cd openwrt
         make defconfig
+        mkdir -p bin/targets/ramips/mt7621
+        cp .config bin/targets/ramips/mt7621/lede.config
+        uname -a
+        dpkg -l
+        cat .config
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
